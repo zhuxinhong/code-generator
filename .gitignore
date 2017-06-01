@@ -1,0 +1,5 @@
+.idea
+code-generator.iml
+target
+src/main/resources/generator.properties
+

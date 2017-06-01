@@ -1,0 +1,12 @@
+#java base package
+commonpackage=
+basepackage=
+
+outRoot=/data/rapidout
+
+# <<MySql>>
+jdbc_driver=com.mysql.jdbc.Driver
+jdbc_url=
+jdbc_username=
+jdbc_password=
+
