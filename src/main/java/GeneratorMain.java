@@ -12,20 +12,7 @@ public class GeneratorMain {
         g.getGenerator().setTemplateRootDir(TEMPLATE_DIR);
         g.deleteOutRootDir();
 //        g.generateByAllTable();
-
-//        List<Table> tables = TableFactory.getInstance().getAllTables();
-//        List<String> toGenerateTables = new ArrayList<>();
-//        for (Table table : tables) {
-//            if(table.getSqlName().startsWith("service_diff")){
-//                toGenerateTables.add(table.getSqlName());
-//            }
-//        }
-//
-//        String[] dest = new String[toGenerateTables.size()];
-//        toGenerateTables.toArray(dest);
-//        g.generateByTable(dest);
-
-        g.generateByTable("d_express");
+        g.generateByTable("settle_order_rpc_status");
 
     }
 
