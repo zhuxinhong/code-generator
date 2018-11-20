@@ -5,7 +5,7 @@ package ${basepackage}.controller;
 
 import ${basepackage}.service.${className}Service;
 import ${basepackage}.model.${className};
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("${classNameLowerCase}")
 public class ${className}Controller {
 
-    @Autowired
+    @Resource
     private ${className}Service ${classNameLowerCase}Service;
 
     @RequestMapping(method = RequestMethod.POST)
