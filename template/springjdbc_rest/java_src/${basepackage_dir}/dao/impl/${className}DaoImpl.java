@@ -14,9 +14,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class ${className}DaoImpl extends BaseSpringJdbcDao<${className},${table.idColumn.javaType}> implements ${className}Dao {
+public class ${className}DaoImpl extends BaseSpringJdbcDao<${className}, ${table.idColumn.javaType}> implements ${className}Dao {
 
-    @@Override
+    @Override
     public Class getEntityClass() {
         return ${className}.class;
     }
