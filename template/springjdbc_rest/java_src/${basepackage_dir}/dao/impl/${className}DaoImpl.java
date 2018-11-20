@@ -4,6 +4,8 @@ package ${basepackage}.dao.impl;
 import ${basepackage}.dao.${className}Dao;
 import ${basepackage}.model.${className};
 import ${basepackage}.repository.BaseSpringJdbcDao;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
@@ -14,10 +16,12 @@ import java.util.List;
 @Repository
 public class ${className}DaoImpl extends BaseSpringJdbcDao<${className},${table.idColumn.javaType}> implements ${className}Dao {
 
+    @@Override
     public Class getEntityClass() {
         return ${className}.class;
     }
 
+    @Override
     public String getIdentifierPropertyName() {
     <#if table.singleId>
         return "${table.idColumn.columnNameLower}";
@@ -34,10 +38,12 @@ public class ${className}DaoImpl extends BaseSpringJdbcDao<${className},${table.
                 + " from ${table.sqlName} ";
     }
 
+    @Override
     public String getFindByIdSql() {
         return getSelectPrefix() + " where ${table.idColumn.sqlName} = ?";
     }
 
+    @Override
     public String getDeleteByIdSql() {
         return "delete from ${table.sqlName} where ${table.idColumn.sqlName} = ?";
     }
@@ -69,5 +75,15 @@ public class ${className}DaoImpl extends BaseSpringJdbcDao<${className},${table.
     @Override
     public void delete(${table.idColumn.javaType} ${table.idColumn.columnNameLower}) {
         getJdbcTemplate().update(getDeleteByIdSql(), ${table.idColumn.columnNameLower});
+    }
+
+    @Override
+    public Page<${className}> page(Pageable pageable, ${className} entity) {
+        String sql = getSelectPrefix() + "where 1=1 "
+        <#list table.columns as column>
+            + " /~ and ${column.sqlName} = '[${column.sqlName}]' ~/<#if column_has_next>,</#if> "
+        </#list>;
+        return pageQuery(sql, pageable, new BeanPropertyRowMapper(getEntityClass()),
+        entity);
     }
 }

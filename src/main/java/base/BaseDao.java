@@ -14,4 +14,5 @@ public interface BaseDao<T, ID extends Serializable> {
     T findOne(ID id);
 
     void delete(ID id);
+
 }

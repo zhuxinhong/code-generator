@@ -3,7 +3,7 @@
 <#assign classNameLowerCase = className?lower_case>
 package ${basepackage}.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import ${basepackage}.dao.${className}Dao;
@@ -13,7 +13,7 @@ import ${basepackage}.model.${className};
 @Service
 public class ${className}ServiceImpl implements ${className}Service {
 
-    @Autowired
+    @Resource
     private ${className}Dao ${classNameFirstLower}Dao;
 
     @Override
