@@ -81,9 +81,9 @@ public class ${className}DaoImpl extends BaseSpringJdbcDao<${className}, ${table
     public Page<${className}> page(Pageable pageable, ${className} entity) {
         String sql = getSelectPrefix() + "where 1=1 "
         <#list table.columns as column>
-            + " /~ and ${column.sqlName} = {${column.columnNameLower}} ~/ "
+            + " /~ and ${column.sqlName} = '[${column.columnNameLower}]' ~/ "
         </#list>
-            + " /~ order by {sortColumns} ~/";
+            + "/~ order by '[sortColumns]' ~/";
         return pageQuery(sql, pageable, new BeanPropertyRowMapper(getEntityClass()),
         entity);
     }
