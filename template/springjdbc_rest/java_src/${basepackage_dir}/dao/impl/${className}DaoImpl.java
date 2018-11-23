@@ -86,4 +86,15 @@ public class ${className}DaoImpl extends BaseSpringJdbcDao<${className}, ${table
         return pageQuery(sql, pageable, new BeanPropertyRowMapper(getEntityClass()),
         entity);
     }
+
+  <#list table.columns as column>
+    <#if column.unique && !column.pk>
+    @Override
+    public ${className} findBy${column.columnName}(${column.javaType} v) {
+        String sql =  getSelectPrefix() + " where ${column.columnNameLower} = ?";
+        List<${className}> list = getJdbcTemplate().query(sql, new Object[]{v}, new BeanPropertyRowMapper(getEntityClass()));
+        return DataAccessUtils.singleResult(list);
+    }
+    </#if>
+  </#list>
 }
