@@ -11,5 +11,4 @@ public interface ${className}Service extends BaseService<${className}, ${table.i
   public ${className} findBy${column.columnName}(${column.javaType} v);
   </#if>
 </#list>
-
 }

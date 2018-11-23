@@ -2,8 +2,6 @@
 <#assign classNameLower = className?uncap_first>
 package ${basepackage}.model;
 
-import java.io.Serializable;
-
 public class ${className} implements java.io.Serializable{
 
 	<@generateFields/>

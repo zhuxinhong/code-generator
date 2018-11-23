@@ -82,7 +82,8 @@ public class ${className}DaoImpl extends BaseSpringJdbcDao<${className}, ${table
         String sql = getSelectPrefix() + "where 1=1 "
         <#list table.columns as column>
             + " /~ and ${column.sqlName} = '[${column.columnNameLower}]' ~/ "
-        </#list>;
+        </#list>
+            + "/~ order by '[sortColumns]' ~/";
         return pageQuery(sql, pageable, new BeanPropertyRowMapper(getEntityClass()),
         entity);
     }
