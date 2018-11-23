@@ -36,4 +36,13 @@ public class ${className}ServiceImpl implements ${className}Service {
         ${classNameFirstLower}Dao.delete(${table.idColumn.columnNameLower});
     }
 
+<#list table.columns as column>
+    <#if column.unique && !column.pk>
+    @Override
+    public ${className} findBy${column.columnName}(${column.javaType} v){
+        return ${classNameFirstLower}Dao.findBy${column.columnName}(v);
+    }
+    </#if>
+</#list>
+
 }
