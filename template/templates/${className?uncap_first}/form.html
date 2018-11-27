@@ -12,7 +12,7 @@
 <#list table.columns as column>
   <#if !column.htmlHidden>
     <div class="form-group">
-      <label for="${column.columnNameLower}" class="col-sm-2 control-label">${column}</label>
+      <label for="${column.columnNameLower}" class="col-sm-2 control-label">${column.columnAlias}</label>
       <div class="col-sm-6">
         <#if column.simpleJavaType=="Integer" || column.simpleJavaType=="Long">
         <input class="form-control" id="${column.columnNameLower}" th:field="*{${column.columnNameLower}}"

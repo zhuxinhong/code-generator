@@ -11,7 +11,7 @@
 <div id="page-wrapper">
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">${className} 列表</h1>
+      <h1 class="page-header">${table.tableAlias} 列表</h1>
     </div>
     <!-- /.col-lg-12 -->
   </div>
@@ -33,7 +33,7 @@
               <thead>
               <tr>
                 <#list table.columns as column>
-                <th align="center">${column}</th>
+                <th align="center">${column.columnAlias}</th>
                 </#list>
                 <th align="center">操作</th>
               </tr>
