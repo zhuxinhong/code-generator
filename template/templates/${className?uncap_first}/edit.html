@@ -1,0 +1,35 @@
+<#assign className = table.className>
+<#assign classNameFirstLower = className?uncap_first>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <div th:include="common/meta :: meta"></div>
+</head>
+<body>
+<div th:include="common/menu :: menu"></div>
+
+<div id="page-wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">${className} 编辑</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <form action="/${classNameFirstLower}/update" method="post" th:object="${r'${'}${classNameFirstLower}${r'}'}" class="form-horizontal">
+        <div th:if="${r"${#fields.hasErrors('*')}"}" class="alert alert-error">
+          <p th:each="error : ${r"${#fields.errors('*')}"}" th:text="${r'${error}'}">
+            Validation error</p>
+        </div>
+        <div th:include="${classNameFirstLower}/form :: form"></div>
+      </form>
+    </div>
+  </div>
+</div>
+
+</body>
+<script type="text/javascript" src="/plugin/jvalidate/jvalidate.js"></script>
+<script type="text/javascript" src="/js/${classNameFirstLower}/edit.js"></script>
+</html>

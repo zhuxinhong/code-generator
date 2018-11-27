@@ -1,0 +1,46 @@
+<#assign className = table.className>
+<#assign classNameFirstLower = className?uncap_first>
+<form th:fragment="form">
+  <form role="form">
+
+<#list table.columns as column>
+  <#if column.htmlHidden>
+    <input type="hidden" th:field="*{${column.columnNameLower}}" name="${column.columnNameLower}"/>
+  </#if>
+</#list>
+
+<#list table.columns as column>
+  <#if !column.htmlHidden>
+    <div class="form-group">
+      <label for="${column.columnNameLower}" class="col-sm-2 control-label">${column}</label>
+      <div class="col-sm-6">
+        <#if column.simpleJavaType=="Integer" || column.simpleJavaType=="Long">
+        <input class="form-control" id="${column.columnNameLower}" th:field="*{${column.columnNameLower}}"
+               jvcorrecttip='' jvtipid="spt_${column.columnNameLower}" maxlength="${column.size}"
+               jvpattern="^[0-9]{1,${column.size}}$" jverrortip="请输入正确的信息"
+               jverrorclass="ui-error-box"/>
+        <#else>
+        <input class="form-control" id="${column.columnNameLower}" th:field="*{${column.columnNameLower}}"
+          jvcorrecttip='' jvtipid="spt_${column.columnNameLower}" maxlength="${column.size}"
+          jvpattern="^.{1,${column.size}}$" jverrortip="请输入正确的信息"
+          jverrorclass="ui-error-box"/>
+        </#if>
+      </div>
+      <div class="col-sm-4" id="spt_${column.columnNameLower}" style="color:red"/>
+    </div>
+
+  </#if>
+</#list>
+
+    <div>
+      <tr>
+        <td height="35" colspan="4" class="bline">
+          <button type="submit" class="btn btn-sm btn-primary">提交</button>
+          <button type="button" class="btn btn-sm btn-info" onclick="window.location='/${classNameFirstLower}/list'">返回列表
+          </button>
+          <button type="reset" class="btn btn-sm btn-default">重置</button>
+        </td>
+      </tr>
+    </div>
+  </form>
+</form>
