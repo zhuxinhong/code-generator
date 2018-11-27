@@ -67,7 +67,7 @@ public class ${className}Controller {
     bind(request, id);
 <#else>
 <#list table.compositeIdColumns as column>
-    ${column.javaType} id = new ${column.javaType}(request.getParameter("${column.columnNameLower}"));
+        ${column.simpleJavaType} id = new ${column.simpleJavaType}(request.getParameter("${column.columnNameLower}"));
 </#list>
 </#if>
 </#macro>

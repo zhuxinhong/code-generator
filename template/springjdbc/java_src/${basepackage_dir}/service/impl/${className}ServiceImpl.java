@@ -27,19 +27,19 @@ public class ${className}ServiceImpl implements ${className}Service {
     }
 
     @Override
-    public ${className} findOne(${table.idColumn.javaType} ${table.idColumn.columnNameLower}) {
+    public ${className} findOne(${table.idColumn.simpleJavaType} ${table.idColumn.columnNameLower}) {
         return ${classNameFirstLower}Dao.findOne(id);
     }
 
     @Override
-    public void delete(${table.idColumn.javaType} ${table.idColumn.columnNameLower}) {
+    public void delete(${table.idColumn.simpleJavaType} ${table.idColumn.columnNameLower}) {
         ${classNameFirstLower}Dao.delete(${table.idColumn.columnNameLower});
     }
 
 <#list table.columns as column>
     <#if column.unique && !column.pk>
     @Override
-    public ${className} findBy${column.columnName}(${column.javaType} v){
+    public ${className} findBy${column.columnName}(${column.simpleJavaType} v){
         return ${classNameFirstLower}Dao.findBy${column.columnName}(v);
     }
     </#if>

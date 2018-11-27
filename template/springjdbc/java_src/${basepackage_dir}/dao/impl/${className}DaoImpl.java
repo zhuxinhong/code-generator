@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class ${className}DaoImpl extends BaseSpringJdbcDao<${className}, ${table.idColumn.javaType}> implements ${className}Dao {
+public class ${className}DaoImpl extends BaseSpringJdbcDao<${className}, ${table.idColumn.simpleJavaType}> implements ${className}Dao {
 
     @Override
     public Class getEntityClass() {
@@ -67,13 +67,13 @@ public class ${className}DaoImpl extends BaseSpringJdbcDao<${className}, ${table
     }
 
     @Override
-    public ${className} findOne(${table.idColumn.javaType} ${table.idColumn.columnNameLower}) {
+    public ${className} findOne(${table.idColumn.simpleJavaType} ${table.idColumn.columnNameLower}) {
         List<${className}> result = getJdbcTemplate().query(getFindByIdSql(), new Object[]{${table.idColumn.columnNameLower}}, new BeanPropertyRowMapper(getEntityClass()));
         return DataAccessUtils.singleResult(result);
     }
 
     @Override
-    public void delete(${table.idColumn.javaType} ${table.idColumn.columnNameLower}) {
+    public void delete(${table.idColumn.simpleJavaType} ${table.idColumn.columnNameLower}) {
         getJdbcTemplate().update(getDeleteByIdSql(), ${table.idColumn.columnNameLower});
     }
 
@@ -91,7 +91,7 @@ public class ${className}DaoImpl extends BaseSpringJdbcDao<${className}, ${table
   <#list table.columns as column>
     <#if column.unique && !column.pk>
     @Override
-    public ${className} findBy${column.columnName}(${column.javaType} v) {
+    public ${className} findBy${column.columnName}(${column.simpleJavaType} v) {
         String sql =  getSelectPrefix() + " where ${column.columnNameLower} = ?";
         List<${className}> list = getJdbcTemplate().query(sql, new Object[]{v}, new BeanPropertyRowMapper(getEntityClass()));
         return DataAccessUtils.singleResult(list);
