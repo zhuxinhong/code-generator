@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("${classNameFirstLower}")
 public class ${className}Controller {
 
-    private static final String LIST_ACTION = "redirect:/${className}/list";
+    private static final String LIST_ACTION = "redirect:/${classNameFirstLower}/list";
 
     @Resource
     private ${className}Service ${classNameFirstLower}Service;
