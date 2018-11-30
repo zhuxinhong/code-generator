@@ -43,7 +43,7 @@
                 <#list table.columns as column>
                   <th align="center" th:text="${r'${item.'}${column.columnNameLower}${r'}'}"/>
                 </#list>
-                <td><a th:href="@{'/picSrc/edit?id=' + ${r'${item.id}'}}"> [编辑]</a>&nbsp;</td>
+                <td><a th:href="@{'/${classNameFirstLower}/edit?id=' + ${r'${item.id}'}}"> [编辑]</a>&nbsp;</td>
               </tr>
               </tbody>
             </table>

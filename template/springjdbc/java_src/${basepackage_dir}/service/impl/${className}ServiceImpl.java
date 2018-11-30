@@ -39,7 +39,7 @@ public class ${className}ServiceImpl implements ${className}Service {
     }
 
     @Override
-    public Page page((Pageable pageable, ${className} ${classNameFirstLower}){
+    public Page page(Pageable pageable, ${className} ${classNameFirstLower}){
         return ${classNameFirstLower}Dao.page(pageable, ${classNameFirstLower});
     }
 <#list table.columns as column>

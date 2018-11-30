@@ -12,7 +12,7 @@ public class GeneratorMain {
         g.getGenerator().setTemplateRootDir(TEMPLATE_DIR);
         g.deleteOutRootDir();
 //        g.generateByAllTable();
-        g.generateByTable("sys_user");
+        g.generateByTable("product_order");
 
     }
 
