@@ -41,7 +41,6 @@ public class ${className}Controller {
     public ModelAndView edit(HttpServletRequest request){
         <@generateIdParameter/>
         ${className} ${classNameFirstLower} = ${classNameFirstLower}Service.findOne(id);
-        ${classNameFirstLower}Service.update(${classNameFirstLower});
         return new ModelAndView("${classNameFirstLower}/edit", "${classNameFirstLower}", ${classNameFirstLower});
     }
 
