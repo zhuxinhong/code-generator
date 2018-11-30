@@ -46,9 +46,8 @@ public class ${className}Controller {
     }
 
     @PostMapping("update")
-    public ModelAndView update(HttpServletRequest request){
-        <@generateIdParameter/>
-        ${className} ${classNameFirstLower} = ${classNameFirstLower}Service.findOne(id);
+    public ModelAndView update(HttpServletRequest request, ${className} ${classNameFirstLower}){
+        ${classNameFirstLower}Service.update(${classNameFirstLower});
         return new ModelAndView(LIST_ACTION);
     }
 

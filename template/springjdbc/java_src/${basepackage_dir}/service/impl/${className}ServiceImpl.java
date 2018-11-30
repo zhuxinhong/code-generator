@@ -4,6 +4,8 @@
 package ${basepackage}.service.impl;
 
 import javax.annotation.Resource;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import ${basepackage}.dao.${className}Dao;
@@ -36,6 +38,10 @@ public class ${className}ServiceImpl implements ${className}Service {
         ${classNameFirstLower}Dao.delete(${table.idColumn.columnNameLower});
     }
 
+    @Override
+    public Page page((Pageable pageable, ${className} ${classNameFirstLower}){
+        return ${classNameFirstLower}Dao.page(pageable, ${classNameFirstLower});
+    }
 <#list table.columns as column>
     <#if column.unique && !column.pk>
     @Override
