@@ -42,7 +42,7 @@ public class ${className}Controller {
         <@generateIdParameter/>
         ${className} ${classNameFirstLower} = ${classNameFirstLower}Service.findOne(id);
         ${classNameFirstLower}Service.update(${classNameFirstLower});
-        return new ModelAndView("${classNameFirstLower}/edit}", "${classNameFirstLower}", ${classNameFirstLower});
+        return new ModelAndView("${classNameFirstLower}/edit", "${classNameFirstLower}", ${classNameFirstLower});
     }
 
     @PostMapping("update")
