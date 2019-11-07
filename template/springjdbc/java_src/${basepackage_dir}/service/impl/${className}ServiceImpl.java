@@ -34,8 +34,8 @@ public class ${className}ServiceImpl implements ${className}Service {
     }
 
     @Override
-    public void delete(${table.idColumn.simpleJavaType} ${table.idColumn.columnNameLower}) {
-        ${classNameFirstLower}Dao.delete(${table.idColumn.columnNameLower});
+    public boolean delete(${table.idColumn.simpleJavaType} ${table.idColumn.columnNameLower}) {
+        return ${classNameFirstLower}Dao.delete(${table.idColumn.columnNameLower}) == 1;
     }
 
     @Override

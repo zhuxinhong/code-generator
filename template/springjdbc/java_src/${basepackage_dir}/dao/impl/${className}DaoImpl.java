@@ -73,8 +73,8 @@ public class ${className}DaoImpl extends BaseSpringJdbcDao<${className}, ${table
     }
 
     @Override
-    public void delete(${table.idColumn.simpleJavaType} ${table.idColumn.columnNameLower}) {
-        getJdbcTemplate().update(getDeleteByIdSql(), ${table.idColumn.columnNameLower});
+    public int delete(${table.idColumn.simpleJavaType} ${table.idColumn.columnNameLower}) {
+        return getJdbcTemplate().update(getDeleteByIdSql(), ${table.idColumn.columnNameLower});
     }
 
     @Override
